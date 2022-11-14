@@ -1,6 +1,6 @@
 import React from "react";
 import CardEditor from "./CardEditor";
-import CardViewer from './CardViewer'
+import CardViewer from "./CardViewer";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,12 +14,12 @@ class App extends React.Component {
     };
   }
 
-  addCard = card => {
+  addCard = (card) => {
     const cards = this.state.cards.slice().concat(card);
     this.setState({ cards });
   };
 
-  deleteCard = index => {
+  deleteCard = (index) => {
     const cards = this.state.cards.slice();
     cards.splice(index, 1);
     this.setState({ cards });
@@ -38,7 +38,7 @@ class App extends React.Component {
         />
       );
     } else {
-      return <CardViewer switchMode={this.switchMode} />;
+      return <CardViewer switchMode={this.switchMode} cards={this.state.cards}/>;
     }
   }
 }

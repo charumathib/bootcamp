@@ -8,8 +8,10 @@ class CardEditor extends React.Component {
   }
 
   addCard = () => {
-    this.props.addCard(this.state);
-    this.setState({ front: '', back: '' });
+    if (this.state.front.trim().length > 0 && this.state.back.trim().length > 0) {
+        this.props.addCard(this.state);
+        this.setState({ front: '', back: '' });
+    }
   };
 
   deleteCard = index => this.props.deleteCard(index);
@@ -58,7 +60,7 @@ class CardEditor extends React.Component {
         />
         <button onClick={this.addCard}>Add card</button>
         <hr />
-        <button onClick={this.props.switchMode}>Go to card viewer</button>
+        <button onClick={this.props.switchMode} disabled={this.props.cards.length === 0}>Go to card viewer</button>
       </div>
     );
   }
